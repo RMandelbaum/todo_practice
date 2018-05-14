@@ -1,0 +1,2 @@
+class AddColumnToTodoList < ApplicationRecord
+end

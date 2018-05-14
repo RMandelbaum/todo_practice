@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :todo_list_title %>
@@ -19,6 +20,10 @@
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :todo_list_description %>
+  </div>
+
+  <div class="field">
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select One!") %>
   </div>
 
   <div class="actions">

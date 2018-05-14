@@ -1,0 +1,2 @@
+class AddColumnToTodoListsController < ApplicationController
+end

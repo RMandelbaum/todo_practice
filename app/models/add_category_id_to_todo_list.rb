@@ -1,0 +1,2 @@
+class AddCategoryIdToTodoList < ApplicationRecord
+end

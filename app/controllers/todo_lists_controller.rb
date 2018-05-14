@@ -1,3 +1,4 @@
+require 'pry'
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
 
@@ -7,6 +8,7 @@ class TodoListsController < ApplicationController
     @todo_lists = TodoList.all
   end
 
+
   # GET /todo_lists/1
   # GET /todo_lists/1.json
   def show
@@ -15,6 +17,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists/new
   def new
     @todo_list = TodoList.new
+    @categories = Category.all.map {|c| [c.title, c.id]}
   end
 
   # GET /todo_lists/1/edit
@@ -25,6 +28,7 @@ class TodoListsController < ApplicationController
   # POST /todo_lists.json
   def create
     @todo_list = TodoList.new(todo_list_params)
+    @todo_list.category_id = params[:category_id]
 
     respond_to do |format|
       if @todo_list.save
@@ -69,6 +73,6 @@ class TodoListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_list_params
-      params.require(:todo_list).permit(:title, :description)
+      params.require(:todo_list).permit(:title, :description, :category_id)
     end
 end
